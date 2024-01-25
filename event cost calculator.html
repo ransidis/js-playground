@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<style>
-			div{
-				margin: 15px auto;
-			}
-		</style>
+		<link rel="icon" href="favicon.png" type="image/x-icon">
+		<meta charset="utf-8">
+		<title>Cost Calculator</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>JS Playground</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+		<title>Cost Calculator</title>
 		<script>
 			function validateForm(yourname, youremail, noOfEvents,incomeLevel){
 				//	check all inputs and if inputs are correct, the function will return true otherwise false.
 				var validemail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-				
 				if (yourname.trim() ===""){
 					alert("Please enter your name")
 					return false;
@@ -25,11 +26,9 @@
 					return false;
 				}
 				return true;
-								
-				
 			}
-			
-			function calculateDiscountRate(noOfEvents,incomeLevel){				
+
+			function calculateDiscountRate(noOfEvents,incomeLevel){
 				var discount=0;
 
 				 if(incomeLevel=="1"){
@@ -44,74 +43,132 @@
 					discount +=0
 				 }
 				 return discount;
-					
-				
-				
-				
 			}
-			
 			function getAmount(){
 				// Take inputs from the form.
 				var yourname = document.getElementsByName("txtname")[0].value;
 				var youremail = document.getElementsByName("txtemail")[0].value;
 				var noOfEvents = document.getElementsByName("numnoofevents")[0].value;
 				var incomeLevel = document.getElementsByName("cmbincome")[0].value;
-				
-				
-				
-				
-				
+
 				//	Call validateForm function and if the result is true, continue the calculation otherwise stop the function with an alert message 
-				
+
 				if (validateForm(yourname, youremail, noOfEvents,incomeLevel)){
 					var CalculatedDiscount = calculateDiscountRate(noOfEvents,incomeLevel)
 					var costPerEvent = 5000;
 
 					var totcost = costPerEvent * (1-CalculatedDiscount)*noOfEvents
 
-					document.getElementById("output").innerHTML = 
+					document.getElementById("output").innerHTML =
    	 					`Dear ${yourname}, <br>
     					The total cost for your requirement is Rs. ${totcost}`;
 				}
-				
-				
-				
 
-				
 			}
-		
+				var count=1;
+				function information() {
+					if (count==1){
+					document.getElementById("information").innerHTML =
+						`<p>Event cost is calculated as follows: <br>
+
+							They charge LKR 5,000 per event from a participant.<br/>
+
+							<br/><b>Discount:</b> <br/>
+							20% off for low-income people.<br/>
+							10% off if number of events is greater than 2
+
+							</p>`;
+						count = count-1;}
+
+				 else if (count = count+1){
+					document.getElementById("information").innerHTML =
+						``;
+				 }}
+
+
 		</script>
 	</head>
-	<body>
-		<h1>Event Cost Calculator</h1>
-		<form name="frmcostcalc">
-			<div>
-			<label>Your Name : </label>
-			<input type="text" name="txtname" style="width: 350px;" />
+	<body class="bg-dark">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+		<nav class="navbar navbar-expand-lg bg-body-tertiary bg-primary" data-bs-theme="dark">
+			<div class="container-fluid">
+			  <a class="navbar-brand" href="index.html">JS Playground</a>
+			  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			  </button>
+			  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+				<div class="navbar-nav">
+				  <a class="nav-link active" href="index.html">Home</a>
+				  <a class="nav-link" href="BudgetAnalyzer.html">Budget Analyzer</a>
+				  <a class="nav-link active" aria-current="page" href="event cost calculator.html">Cost Calculator</a>
+				  <a class="nav-link" href="POS.html">POS</a>
+				</div>
+			  </div>
 			</div>
-			<div>
-			<label>Your Email : </label>
-			<input type="email" name="txtemail" style="width: 350px;"/>
+		  </nav>
+		<main style=" height: 100vh;">
+			<div class="container-fluid col-sm-5 bg-light" style="margin-top: 2rem; border-radius: 1rem;">
+			<div class="row d-flex flex-column justify-content-center align-items-center">
+				<div class="col-12 text-center my-4">
+					<h1>Event Cost Calculator</h1>
+				</div>
 			</div>
-			<div>
-			<label>Monthly Income : </label>
-			<select name="cmbincome">
-				<option value=""> -- Select One -- </option>
-				<option value="1"> Less than 100,000 (&lt; 100,000) </option>
-				<option value="2"> Greater than or equal 100,000 (&gt;= 100,000) </option>
-			</select>
+			<div class="row" >
+				<div class="col-12 d-flex justify-content-center align-items-center" style="border-radius: 2rem;" >
+				<ul class="list-group">
+				<form name="frmcostcalc">
+					<li class="list-group-item">
+						<div>
+						<label class="col-16 col-sm-6">Your Name : </label>
+						<input class="col-16 col-sm-6" type="text" name="txtname" style="width: auto;" placeholder="Ex: John Smith"/>
+						</div>
+					</li>
+					<li class="list-group-item">
+						<div>
+						<label class="col-16 col-sm-6">Your Email : </label>
+						<input class="col-16 col-sm-6" type="email" name="txtemail" style="width: auto;" placeholder="yourname@mail.com"/>
+						</div>
+					</li>
+					<li class="list-group-item">
+						<div>
+						<label class="col-16 col-sm-6">Monthly Income : </label>
+						<select class="col-16 col-sm-6" name="cmbincome" style="max-width: 10rem;" >
+							<option value=""> -- Select One -- </option>
+							<option value="1"> Less than 100,000 (&lt; 100,000) </option>
+							<option value="2"> Greater than or equal 100,000 (&gt;= 100,000) </option>
+						</select>
+						</div>
+					</li>
+					<li class="list-group-item">
+						<div>
+						<label class="col-16 col-sm-6">Number of Events expected to attend : </label>
+						<input class="col-16 col-sm-6" type="number" name="numnoofevents" style="max-width: 10rem;" placeholder="1 - 5"/>
+						</div>
+					</li>
+					<li class="list-group-item d-flex align-items-center justify-content-center">
+						<div>
+						<input type="button" name="btncalc" value="Calculate" onClick="getAmount()" class="btn btn-primary" />
+					</div>
+					</li>
+					</form>
+					<div id="output" style="margin: 1rem; color: brown; font-weight: 600;">
+					</div>
+				</ul>
+				</div>
 			</div>
-			<div>
-			<label>Number of Events expected to attend : </label>
-			<input type="number" name="numnoofevents"/>
+			<class="row">
+				
 			</div>
-			<div>
-			<input type="button" name="btncalc" value="Calculate" onClick="getAmount()" />
+			<span class="d-flex flex-row justify-content-center">
+				<input type="button" name="info" value="How this works" onClick="information()" class="btn btn-warning my-2 col-sm-3 d-flex justify-content-center my-3" /></span>
+				<div id="information" class="my-1 text-center" style=" padding-bottom: 1rem; color: rgb(231, 78, 78);">
+				</div>
 			</div>
-		</form>
-		<div id="output">
-		
-		
-		</div>
+			
+		</main>
+		<footer style="padding-top: 1rem; padding-bottom: 1rem; background-color: rgb(32, 30, 30); color: azure;">
+			<center>Made with ❤️ by Ransi Dissanayake</center>
+		  </footer>
 	</body>
 </html>
