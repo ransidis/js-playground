@@ -2,24 +2,23 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>POS</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<title>Poin Of Sale</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <script>
 
 
 function getUnitPrice(){
-		
-/*	
+/*
 
 When the item is selected from the list, the unit price should be displayed automatically in the correct box. 
-according to the following price list. 
+according to the following price list.
 	Wireless Keyboard	: 4000.00 LKR
 	Wireless Mouse		: 3000.00 LKR
 	Headphone			: 1000.00 LKR
 	Web Camera			: 8000.00 LKR
 	Microphone			: 2500.00 LKR
 
-	
 */
 
     var item = document.getElementsByName("items")[0].value;
@@ -39,13 +38,12 @@ according to the following price list.
 }
 
 function calcSubtotal(){
-	
 /*
 
 When the quantity  is entered, the sub total should be displayed automatically in the correct box.
 The inputs should be properly validated.
 
-*/	
+*/
 
     function validatecalcSubtotal(quantity){
         if(isNaN(quantity)){
@@ -67,24 +65,22 @@ The inputs should be properly validated.
     var subtot = quantity * unitPrice;
     document.getElementsByName("subtotal")[0].value = subtot; 
     }
-	
 }
 
 
 function calcDiscount(){
-	
 /*
 
 When the discount rate (between 2% and 10%) is entered, the discount amount should be displayed automatically in the correct box.
 The inputs should be properly validated.
 
-*/		
+*/
 
     function validatecalcDiscount(discount){
         if(isNaN(discount)){
             alert("Discount cannot be null");
             return false;
-        } else if(discount<=0){
+        } else if(discount.value<=0){
             alert("Please enter discount rate 2% - 10%");
             return false;
         } else if(discount>10){
@@ -145,73 +141,113 @@ The inputs should be properly validated.
 </script>
 </head>
 
-<body class="container">
-	<div class="panel panel-success" style="margin-top: 10px;">
-    	<div class="panel-heading">
-        	<p style="font-size: 36px; margin: 0;"><strong>X-tech Computers</strong></p>
-            <p style="font-size: 16px; margin: 0;">No. 12, University Lane, Wijerama. Tel: 071-8351426</p>
+<body class="">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary bg-primary" data-bs-theme="dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html">JS Playground</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+              <a class="nav-link" href="BudgetAnalyzer.html">Budget Analyzer</a>
+              <a class="nav-link" href="event cost calculator.html">Cost Calculator</a>
+              <a class="nav-link" href="POS.html">POS</a>
+            </div>
+          </div>
         </div>
-        <div class="panel-body">
-        <table class="table table-hover">
-            <tr>
-                <th class="text-center">Item</th>
-                <th class="text-center">Quantity</th>
-                <th class="text-center">Unit Price</th>
-                <th class="text-center">Amount</th>
-            </tr>
-            <tr>
-                <td class="col-lg-5">
-                    <select class="form-control" required onChange="getUnitPrice()"  name="items">
-                        <option value="">Select one</option>
-                        <option value="0">Wireless Keyboard</option>
-                        <option value="1">Wireless Mouse</option>
-                        <option value="2">headphone</option>
-                        <option value="3">Web Camera</option>
-						<option value="4">Microphone</option>
-                    </select>
-                </td>
-                <td class="col-lg-2">
-                    <input class="form-control" type="number" value="0" name="quantity" required onKeyUp="calcSubtotal()" />
-                </td>
-                <td class="col-lg-2">
-                    <input class="form-control" type="number" value="0" name="unitprice" readonly />
-                </td>
-                <td class="col-lg-3">
-                    <input class="form-control" type="number" value="0" name="subtotal" readonly />
-                </td>
-            </tr>
-		</table>
-        <table class="table" style="float: right; width: 600px;">
-            <tr style="border:none">
-                <td class="text-center col-lg-3"><strong>Discount Rate (%)</strong></td>
-                <td class="col-lg-2"><input class="form-control" type="number" value="0" name="discountRate" onKeyUp="calcDiscount()" /></td>
-                <td class="col-lg-3"><input class="form-control" type="number" value="0" name="discountAmount" readonly /></td>
-            </tr>
-            <tr style="border-top:none">
-                <td class="text-center"><strong>Total</strong></td>
-                <td></td>
-                <td><input class="form-control" type="number" value="0" name="discount" readonly /></td>
-            </tr>
-            <tr style="border:none">
-                <td class="text-center"><strong>Cash</strong></td>
-                <td></td>
-                <td><input class="form-control" type="number" value="0" name="cash" onKeyUp="calcBalance()" /></td>
-            </tr>
-        	<tr style="border:none">
-                <td class="text-center"><strong>Balance</strong></td>
-                <td></td>
-                <td><input class="form-control" type="number" value="0" name="balance" readonly /></td>
-            </tr>
-        </table>
-        
+      </nav>
+
+    <main class="d-flex align-items-center justify-content-center bg-dark">
+        <div class="container p-3 m-4" >
+            <div class="row bg-light" style=" border-radius: 1rem 1rem 0rem 0rem;">
+                <div class="col-12 text-center py-3" style="background-color: #858f99; border-radius: 1rem 1rem 0rem 0rem;">
+                    <p style="font-size: 36px; margin: 0;"><strong>Ipra Computers</strong></p>
+                    <p style="font-size: 16px; margin: 0;">No. 12, Union Place, Colombo. Tel: 070 12 34 567</p>
+                </div>
+                <div class="row my-3">
+                    <div class="col-12 col-sm-3">
+                        <label class="text-center" for="items">Item</label>
+                        <select class="form-control" required onchange="getUnitPrice()"  name="items" id="items">
+                            <option value="">-- Select Item --</option>
+                            <option value="0">Wireless Keyboard</option>
+                            <option value="1">Wireless Mouse</option>
+                            <option value="2">headphone</option>
+                            <option value="3">Web Camera</option>
+                            <option value="4">Microphone</option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-sm-3">
+                        <label class="text-center">Quantity</label>
+                        <input class="form-control" type="number"  name="quantity" placeholder="Enter Quantity" onKeyUp="calcSubtotal()" />
+                    </div>
+                    <div class="col-12 col-sm-3">
+                        <label class="text-center">Unit Price</label>
+                        <input class="form-control" type="number"  placeholder="Select Item" name="unitprice" readonly disabled />
+                    </div>
+                    <div class="col-12 col-sm-3">
+                        <label class="text-center">Amount</label>
+                        <input class="form-control" type="number"  placeholder="Select Quantity" name="subtotal" readonly disabled/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-0 col-sm-6">
+                        <!--space here-->
+                    </div>
+                    <div class="col-12 col-sm-6">
+                    <div class="container-fluid" style="margin: 1rem;">
+                        <div class="row ">
+                        <div class="col-12 col-sm-6 d-flex flex-row align-items-center justify-content-center" style="padding: 1rem;" >
+                            <label for="discountRate" class=""><strong>Discount Rate (%)</strong></label>
+                            <input class="form-control" type="number"  name="discountRate" id="discountRate" placeholder="2% - 10%" onKeyUp="calcDiscount() " />
+                        </div>
+                        <div class="col-12 col-sm-6" style="padding: 1rem;">
+                            <input class="form-control" type="number"  placeholder="Select Discount Rate" name="discountAmount" readonly disabled />
+                        </div>
+                        </div>
+
+                        <div class="row">
+                        <div class="col-12 col-sm-6" style="padding: 1rem;">
+                            <label class="text-center"><strong>Total</strong></label>
+                        </div>
+                        <div class="col-12 col-sm-6" style="padding: 1rem;">
+                            <input class="form-control" type="number"  placeholder="Select Discount Rate" name="discount" readonly disabled/>
+                        </div>
+                        </div>
+
+                        <div class="row">
+                        <div class="col-12 col-sm-6" style="padding: 1rem;">
+                            <label class="text-center"><strong>Cash</strong></label>
+                        </div>
+                        <div class="col-12 col-sm-6" style="padding: 1rem;">
+                        <input class="form-control" type="number" name="cash" placeholder="Enter Cash Given" onkeyup="calcBalance()" />
+                        </div>
+                        </div>
+
+                        <div class="row">
+                        <div class="col-12 col-sm-6" style="padding: 1rem;">
+                            <label class="text-center"><strong>Balance</strong></label>
+                        </div>
+                        <div class="col-12 col-sm-6" style="padding: 1rem;">
+                            <input class="form-control" type="number"  placeholder="Select Cash given" name="balance" readonly disabled />
+                        </div>
+                        </div>
+                        <button type="reset" class="btn btn-primary" onclick="window.location.reload();">Reset</button>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <div class="row text-center" style="background-color: #858f99; border-radius: 0rem 0rem 1rem 1rem;" >
+                    <div class="col-12 text-center py-3" >
+                        &copy; 2023 | Ipra Computers
+                    </div>
+            </div>
         </div>
-		<div class="panel-footer">
-			&copy; 2023 | X-tech Computers
-		
-		</div>
-        
-        	
-    
-    </div>
+    </main>
+    <footer style="padding-top: 1rem; padding-bottom: 1rem; background-color: rgb(32, 30, 30); color: azure;">
+        <center>Made with ❤️ by Ransi Dissanayake</center>
+      </footer>
 </body>
 </html>
